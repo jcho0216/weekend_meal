@@ -87,8 +87,8 @@ export const reset = css`
     border: 0;
     font-size: 100%;
     font: inherit;
-    font-family: "NanumSquareEB";
     vertical-align: baseline;
+    font-family: 'Jua', sans-serif;
   }
   /* HTML5 display-role reset for older browsers */
   article,

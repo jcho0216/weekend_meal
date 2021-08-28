@@ -4,13 +4,7 @@ export const request = (method: Method, url: string) => {
     return axios({
         method,
         url: url,
-        headers: {
-            'Date': "Fri, 27 Aug 2021 12:20:30 GMT",
-            'apigw-requestid': 'Eudf5gnZIE0EMJg='
-            
-
-            
-        },
+        headers: {},
         data: {}
     })
     .then((res) => console.log(res))
