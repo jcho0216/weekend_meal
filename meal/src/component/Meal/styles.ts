@@ -12,11 +12,12 @@ export const MealContainer = styled.div`
   height: 80%;
   background-color: white;
   margin: auto auto;
+  border-radius: 10px;
+  overflow: scroll;
 `;
 
 export const MealTable = styled.div`
   width: 100%;
-  height: 100%;
   margin: auto auto;
   background-color: #ffffff;
   border-radius: 15px;
@@ -24,32 +25,76 @@ export const MealTable = styled.div`
   overflow: auto;
 `;
 
-export const TableHead = styled.div`
+export const TableHeader = styled.div`
+  width: 100%;
   background-color: #403d56;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: table;
+  color: white;
 `;
 
-export const TableBody = styled.div`
-  background-color: white;
-  color: yellow;
-`;
-
-export const TableRow = styled.div`
-  background-color: #403d56;
-  height: 10;
-  th {
-    color: white;
+export const TableHeaderCell = styled.div`
+  font-size: 20px;
+  padding: 10px;
+  display: table-cell;
+  color: white;
+  text-align: center;
+  height: 30px;
+  vertical-align: middle;
+  &:nth-child(1) {
+    width: 10%;
+  }
+  &:nth-child(2) {
+    width: 10%;
+  }
+  &:nth-child(3) {
+    width: 10%;
+  }
+  &:nth-child(4) {
+    width: 20%;
+  }
+  &:nth-child(5) {
+    width: 25%;
+  }
+  &:nth-child(6) {
+    width: 25%;
   }
 `;
 
-export const TableHeight = styled.div`
+export const TableCell = styled.div`
+  /* width: 100%; */
   font-size: 20px;
   padding: 10px;
-`;
-
-export const TableData = styled.div`
   display: table-cell;
   text-align: center;
-  padding: 10px;
+  height: 30px;
+  vertical-align: middle;
+  &:nth-child(1) {
+    width: 10%;
+  }
+  &:nth-child(2) {
+    width: 10%;
+  }
+  &:nth-child(3) {
+    width: 10%;
+  }
+  &:nth-child(4) {
+    width: 20%;
+  }
+  &:nth-child(5) {
+    width: 25%;
+  }
+  &:nth-child(6) {
+    width: 25%;
+  }
+
+`;
+
+export const TableRow = styled.div`
+  width: 100%;
+  display: table;
+  text-align: center;
   line-height: 2px;
   vertical-align: middle;
 `;
