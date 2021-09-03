@@ -4,8 +4,36 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background: linear-gradient(180deg, #94e3e3, #b5e7e3);
+  display: inline-block;
+  color: rgba(35,53,57,.6);
+`;
+
+export const Header = styled.div`
+  width: 100%;
+  height: 100px;
   display: flex;
-  color: grey;
+  justify-content: space-evenly;
+`;
+
+export const Title = styled.div`
+  font-weight: 700;
+  font-size: 30px;
+  color: #f4f8f9;
+  align-content: center;
+  margin: 34px;
+`;
+
+export const Select = styled.select`
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  color: #f4f8f9;
+  outline: none;
+  font-size: 18px;
+`;
+
+export const Option = styled.option`
+
 `;
 
 export const MealContainer = styled.div`
@@ -13,7 +41,7 @@ export const MealContainer = styled.div`
   height: 75%;
   background-color: white;
   margin: auto auto;
-  border-radius: 20px;
+  border-radius: 5px;
 `;
 
 export const MealTable = styled.div`
@@ -27,18 +55,19 @@ export const MealTable = styled.div`
 
 export const TableHeader = styled.div`
   width: 100%;
-  background-color: #403d56;
   display: table;
-  color: white;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  /* border-bottom: 1px solid #f4f8f9; */
+  font-weight: 800;
+  /* background-color:  */
 `;
 
 export const TableHeaderCell = styled.div`
   font-size: 20px;
   padding: 10px;
   display: table-cell;
-  color: white;
+  color: rgba(35,53,57,.6);
   text-align: center;
   height: 30px;
   vertical-align: middle;
@@ -98,9 +127,9 @@ export const TableRow = styled.div`
   text-align: center;
   line-height: 2px;
   vertical-align: middle;
-
+  border-bottom: 1px solid #f4f8f9;
   &:nth-child(even) {
-    background-color: #e7ebe9;
+    /* background-color: #e7ebe9; */
   }
 
   &:hover {
