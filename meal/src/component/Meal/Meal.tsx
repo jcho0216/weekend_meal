@@ -84,7 +84,7 @@ const Meal: FC = (): JSX.Element => {
           </S.TableRow>
         </S.TableHeader>
         {loading ? (
-          <div>loading...</div>
+          <h1>loading...</h1>
         ) : (
           <S.MealTable>
             {data.map((res: any, index: number) => {

@@ -1,1 +1,1 @@
-export const baseUrl = process.env.REACT_APP_API_URL;
+export const baseUrl = 'https://41xzgsp1fk.execute-api.ap-northeast-2.amazonaws.com/prod/v1/apply/weekend-meal';
