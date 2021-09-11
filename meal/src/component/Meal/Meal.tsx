@@ -1,13 +1,16 @@
-import React, { MutableRefObject, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import * as S from "./styles";
-import { getClassMember, baseUrl } from "../../utils/api/axios";
+import { getClassMember } from "../../utils/api/axios";
+import { baseUrl } from "../../utils/api/baseURL";
 
-const Meal = (): JSX.Element => {
-  const [data, setData] = useState<any>([]);
+const Meal: FC = (): JSX.Element => {
+  const [data, setData] = useState<Array<string>>([]);
   const [className, setClassName] = useState<string>("1-1");
   const [year, setYear] = useState<any>(1);
   const [classroom, setClassroom] = useState<any>(1);
-  const [downloadURL, setDownloadURL] = useState<any>("");
+  const [downloadURL, setDownloadURL] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
   const classList: Array<string> = [
     "1-1",
     "1-2",
@@ -22,18 +25,21 @@ const Meal = (): JSX.Element => {
     "3-3",
     "3-4",
   ];
-  const Select: MutableRefObject<any> = useRef();
 
   useEffect(() => {
     let yearClass = className.split("-");
     let year = yearClass[0];
     let classroom = yearClass[1];
     const GetData = async () => {
+      setLoading(true);
       await getClassMember("GET", `${baseUrl}?grade=${year}&cls=${classroom}`)
         .then((res) => setData(res.status))
-        .catch((err) => console.log(err));
+        .catch((err) =>
+          alert("삐비비비빅 에러 발생~ 정지우 학생에게 문의하세요")
+        );
     };
     GetData();
+    setLoading(false);
     setYear(year);
     setClassroom(classroom);
   }, [className]);
@@ -58,7 +64,6 @@ const Meal = (): JSX.Element => {
           <S.Title>주말 급식 신청 명단</S.Title>
           <S.SelectDownloadBox>
             <S.Select
-              ref={Select}
               onChange={(e) => setClassName(classList[e.target.selectedIndex])}
             >
               {classList.map((value: any, index) => {
@@ -78,20 +83,24 @@ const Meal = (): JSX.Element => {
             <S.TableHeaderCell>급식 관련 기타사항</S.TableHeaderCell>
           </S.TableRow>
         </S.TableHeader>
-        <S.MealTable>
-          {data.map((res: any, index: number) => {
-            return (
-              <S.TableRow key={index}>
-                <S.TableCell>{res.grade}</S.TableCell>
-                <S.TableCell>{res.cls}</S.TableCell>
-                <S.TableCell>{res.number}</S.TableCell>
-                <S.TableCell>{res.name}</S.TableCell>
-                <S.TableCell>{res.value}</S.TableCell>
-                <S.TableCell>{res.reason}</S.TableCell>
-              </S.TableRow>
-            );
-          })}
-        </S.MealTable>
+        {loading ? (
+          <div>loading...</div>
+        ) : (
+          <S.MealTable>
+            {data.map((res: any, index: number) => {
+              return (
+                <S.TableRow key={index}>
+                  <S.TableCell>{res.grade}</S.TableCell>
+                  <S.TableCell>{res.cls}</S.TableCell>
+                  <S.TableCell>{res.number}</S.TableCell>
+                  <S.TableCell>{res.name}</S.TableCell>
+                  <S.TableCell>{res.value}</S.TableCell>
+                  <S.TableCell>{res.reason}</S.TableCell>
+                </S.TableRow>
+              );
+            })}
+          </S.MealTable>
+        )}
       </S.MealContainer>
     </S.Container>
   );
