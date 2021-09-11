@@ -40,7 +40,7 @@ export const Select = styled.select`
   margin-right: 20px;
 `;
 
-export const Download = styled.a`
+export const Download = styled.div`
   height: 30px;
   display: flex;
   font-weight: 700;
@@ -50,7 +50,6 @@ export const Download = styled.a`
   line-height: 60px;
   margin-right: 88px;
   cursor: pointer;
-  text-decoration: none;
 `;
 
 export const SelectDownloadBox = styled.div`
@@ -148,10 +147,6 @@ export const TableRow = styled.div`
   line-height: 2px;
   vertical-align: middle;
   border-bottom: 1px solid #f4f8f9;
-  &:nth-child(even) {
-    /* background-color: #e7ebe9; */
-  }
-
   &:hover {
     color: #212529;
   }

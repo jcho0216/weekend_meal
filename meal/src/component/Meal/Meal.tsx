@@ -23,7 +23,7 @@ const Meal = (): JSX.Element => {
     "3-4",
   ];
   const Select: MutableRefObject<any> = useRef();
-  
+
   useEffect(() => {
     let yearClass = className.split("-");
     let year = yearClass[0];
@@ -42,10 +42,14 @@ const Meal = (): JSX.Element => {
     setDownloadURL(
       `${process.env.REACT_APP_API_URL}/download?grade=${year}&cls=${classroom}`
     );
-
   }, [year, classroom]);
 
-  
+  const moveToDownload = () => {
+    let open = window.open(downloadURL);
+    setTimeout(() => {
+      open?.close();
+    }, 300);
+  };
 
   return (
     <S.Container>
@@ -61,7 +65,7 @@ const Meal = (): JSX.Element => {
                 return <option key={index}>{value}</option>;
               })}
             </S.Select>
-            <S.Download href={downloadURL} target="_blank">다운로드</S.Download>
+            <S.Download onClick={moveToDownload}>다운로드</S.Download>
           </S.SelectDownloadBox>
         </S.Header>
         <S.TableHeader>
