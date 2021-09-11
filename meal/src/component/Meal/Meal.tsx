@@ -1,31 +1,54 @@
-import { useEffect, useState } from "react";
+import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import * as S from "./styles";
-import { request } from "../../utils/api/axios";
-import axios from "axios";
-import { data } from "../../utils/test/testData";
+import { getClassMember } from "../../utils/api/axios";
+const baseUrl =
+  "https://41xzgsp1fk.execute-api.ap-northeast-2.amazonaws.com/prod/v1/apply/weekend-meal";
 
 const Meal = (): JSX.Element => {
+  const [data, setData] = useState<any>([]);
+  const [classNum, setClassNum] = useState<string>("1-1");
+  // const [loading, setLoading] = useState<boolean>(false);
+  const classList: Array<string> = [
+    "1-1",
+    "1-2",
+    "1-3",
+    "1-4",
+    "2-1",
+    "2-2",
+    "2-3",
+    "2-4",
+    "3-1",
+    "3-2",
+    "3-3",
+    "3-4",
+  ];
+  const Select: MutableRefObject<any> = useRef();
+  useEffect(() => {
+    let yearClass = classNum.split("-");
+    let year = yearClass[0];
+    let classroom = yearClass[1];
+    const GetData = async () => {
+      await getClassMember("GET", `${baseUrl}?grade=${year}&cls=${classroom}`)
+        .then((res) => setData(res.status))
+        .catch((err) => console.log(err));
+    };
+    GetData();
+  }, [classNum]);
+
   return (
     <S.Container>
-      <S.Header>
-        <S.Title>주말 급식 신청 명단</S.Title>
-        <S.Select>
-          <S.Option>전체</S.Option>
-          <S.Option>1-1</S.Option>
-          <S.Option>1-2</S.Option>
-          <S.Option>1-3</S.Option>
-          <S.Option>1-4</S.Option>
-          <S.Option>2-1</S.Option>
-          <S.Option>2-2</S.Option>
-          <S.Option>2-3</S.Option>
-          <S.Option>2-4</S.Option>
-          <S.Option>3-1</S.Option>
-          <S.Option>3-2</S.Option>
-          <S.Option>3-3</S.Option>
-          <S.Option>3-4</S.Option>
-        </S.Select>
-      </S.Header>
       <S.MealContainer>
+        <S.Header>
+          <S.Title>주말 급식 신청 명단</S.Title>
+          <S.Select
+            ref={Select}
+            onChange={(e) => setClassNum(classList[e.target.selectedIndex])}
+          >
+            {classList.map((value: any, index) => {
+              return <option key={index}>{value}</option>;
+            })}
+          </S.Select>
+        </S.Header>
         <S.TableHeader>
           <S.TableRow>
             <S.TableHeaderCell>학년</S.TableHeaderCell>
@@ -37,9 +60,9 @@ const Meal = (): JSX.Element => {
           </S.TableRow>
         </S.TableHeader>
         <S.MealTable>
-          {data.map((res) => {
+          {data.map((res: any, index: number) => {
             return (
-              <S.TableRow>
+              <S.TableRow key={index}>
                 <S.TableCell>{res.grade}</S.TableCell>
                 <S.TableCell>{res.cls}</S.TableCell>
                 <S.TableCell>{res.number}</S.TableCell>
@@ -50,7 +73,6 @@ const Meal = (): JSX.Element => {
             );
           })}
         </S.MealTable>
-        <S.Blur />
       </S.MealContainer>
     </S.Container>
   );

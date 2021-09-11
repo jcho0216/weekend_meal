@@ -4,23 +4,28 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background: linear-gradient(180deg, #94e3e3, #b5e7e3);
-  display: inline-block;
-  color: rgba(35,53,57,.6);
+  color: rgba(35, 53, 57, 0.6);
+  display: flex;
 `;
 
 export const Header = styled.div`
+  margin: 0 auto;
   width: 100%;
-  height: 100px;
+  height: 60px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  background-color: #36304a;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 `;
 
 export const Title = styled.div`
   font-weight: 700;
-  font-size: 30px;
+  font-size: 25px;
   color: #f4f8f9;
   align-content: center;
-  margin: 34px;
+  line-height: 60px;
+  margin-left: 45px;
 `;
 
 export const Select = styled.select`
@@ -29,23 +34,21 @@ export const Select = styled.select`
   background-color: transparent;
   color: #f4f8f9;
   outline: none;
-  font-size: 18px;
-`;
-
-export const Option = styled.option`
-
+  font-size: 20px;
+  margin-right: 88px;
 `;
 
 export const MealContainer = styled.div`
-  width: 75%;
-  height: 75%;
+  width: 75vw;
+  height: 85vh;
   background-color: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   margin: auto auto;
-  border-radius: 5px;
 `;
 
 export const MealTable = styled.div`
-  height: 91%;
+  height: 85%;
   width: 100%;
   overflow: auto;
   ::-webkit-scrollbar {
@@ -56,18 +59,14 @@ export const MealTable = styled.div`
 export const TableHeader = styled.div`
   width: 100%;
   display: table;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  /* border-bottom: 1px solid #f4f8f9; */
   font-weight: 800;
-  /* background-color:  */
 `;
 
 export const TableHeaderCell = styled.div`
   font-size: 20px;
   padding: 10px;
   display: table-cell;
-  color: rgba(35,53,57,.6);
+  color: rgba(35, 53, 57, 0.6);
   text-align: center;
   height: 30px;
   vertical-align: middle;
@@ -118,7 +117,6 @@ export const TableCell = styled.div`
   &:nth-child(6) {
     width: 25%;
   }
-
 `;
 
 export const TableRow = styled.div`
@@ -133,13 +131,6 @@ export const TableRow = styled.div`
   }
 
   &:hover {
-    color: #212529; 
+    color: #212529;
   }
-`;
-
-export const Blur = styled.div`
-  filter: blur(10px);
-  width: 100%;
-  height: 30px;
-  background-color: white;
 `;
