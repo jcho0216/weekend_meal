@@ -1,13 +1,13 @@
 import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import * as S from "./styles";
-import { getClassMember } from "../../utils/api/axios";
-const baseUrl =
-  "https://41xzgsp1fk.execute-api.ap-northeast-2.amazonaws.com/prod/v1/apply/weekend-meal";
+import { getClassMember, baseUrl } from "../../utils/api/axios";
 
 const Meal = (): JSX.Element => {
   const [data, setData] = useState<any>([]);
-  const [classNum, setClassNum] = useState<string>("1-1");
-  // const [loading, setLoading] = useState<boolean>(false);
+  const [className, setClassName] = useState<string>("1-1");
+  const [year, setYear] = useState<any>(1);
+  const [classroom, setClassroom] = useState<any>(1);
+  const [downloadURL, setDownloadURL] = useState<any>("");
   const classList: Array<string> = [
     "1-1",
     "1-2",
@@ -23,8 +23,9 @@ const Meal = (): JSX.Element => {
     "3-4",
   ];
   const Select: MutableRefObject<any> = useRef();
+  
   useEffect(() => {
-    let yearClass = classNum.split("-");
+    let yearClass = className.split("-");
     let year = yearClass[0];
     let classroom = yearClass[1];
     const GetData = async () => {
@@ -33,21 +34,35 @@ const Meal = (): JSX.Element => {
         .catch((err) => console.log(err));
     };
     GetData();
-  }, [classNum]);
+    setYear(year);
+    setClassroom(classroom);
+  }, [className]);
+
+  useEffect(() => {
+    setDownloadURL(
+      `${process.env.REACT_APP_API_URL}/download?grade=${year}&cls=${classroom}`
+    );
+
+  }, [year, classroom]);
+
+  
 
   return (
     <S.Container>
       <S.MealContainer>
         <S.Header>
           <S.Title>주말 급식 신청 명단</S.Title>
-          <S.Select
-            ref={Select}
-            onChange={(e) => setClassNum(classList[e.target.selectedIndex])}
-          >
-            {classList.map((value: any, index) => {
-              return <option key={index}>{value}</option>;
-            })}
-          </S.Select>
+          <S.SelectDownloadBox>
+            <S.Select
+              ref={Select}
+              onChange={(e) => setClassName(classList[e.target.selectedIndex])}
+            >
+              {classList.map((value: any, index) => {
+                return <option key={index}>{value}</option>;
+              })}
+            </S.Select>
+            <S.Download href={downloadURL} target="_blank">다운로드</S.Download>
+          </S.SelectDownloadBox>
         </S.Header>
         <S.TableHeader>
           <S.TableRow>

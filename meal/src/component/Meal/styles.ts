@@ -6,6 +6,8 @@ export const Container = styled.div`
   background: linear-gradient(180deg, #94e3e3, #b5e7e3);
   color: rgba(35, 53, 57, 0.6);
   display: flex;
+  min-width: 800px;
+  min-height: 800px;
 `;
 
 export const Header = styled.div`
@@ -35,7 +37,26 @@ export const Select = styled.select`
   color: #f4f8f9;
   outline: none;
   font-size: 20px;
+  margin-right: 20px;
+`;
+
+export const Download = styled.a`
+  height: 30px;
+  display: flex;
+  font-weight: 700;
+  font-size: 18px;
+  color: #f4f8f9;
+  vertical-align: middle;
+  line-height: 60px;
   margin-right: 88px;
+  cursor: pointer;
+  text-decoration: none;
+`;
+
+export const SelectDownloadBox = styled.div`
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
 `;
 
 export const MealContainer = styled.div`
@@ -45,6 +66,7 @@ export const MealContainer = styled.div`
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   margin: auto auto;
+  min-width: 800px;
 `;
 
 export const MealTable = styled.div`
