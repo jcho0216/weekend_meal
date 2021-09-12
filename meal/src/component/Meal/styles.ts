@@ -65,7 +65,7 @@ export const SelectDownloadBox = styled.div`
 export const MealContainer = styled.div`
   width: 75vw;
   height: 85vh;
-  background-color: white;
+  background-color: #36304a;
   border-radius: 5px;
   margin: auto auto;
   min-width: 800px;
@@ -74,15 +74,30 @@ export const MealContainer = styled.div`
 `;
 
 export const MealTable = styled.div`
-  height: 82%;
+  height: 90%;
   width: 100%;
   overflow: auto;
+  background-color: white;
+  &::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #19b6b6;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+  }
 `;
 
 export const TableHeader = styled.div`
   width: 100%;
   display: table;
   font-weight: 800;
+  background-color: white;
 `;
 
 export const TableHeaderCell = styled.div`

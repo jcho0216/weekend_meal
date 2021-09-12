@@ -35,7 +35,7 @@ const Meal: FC = (): JSX.Element => {
       await getClassMember("GET", `${baseUrl}?grade=${year}&cls=${classroom}`)
         .then((res) => setData(res.status))
         .catch((err) =>
-          alert("삐비비비빅 에러 발생~ 정지우 학생에게 문의하세요")
+          alert("삐비빅, 에러 발생: 정지우 학생에게 문의하세요!!(와이파이 연결)")
         );
     };
     GetData();
