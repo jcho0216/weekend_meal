@@ -67,7 +67,7 @@ const Meal: FC = (): JSX.Element => {
               onChange={(e) => setClassName(classList[e.target.selectedIndex])}
             >
               {classList.map((value: any, index) => {
-                return <option key={index}>{value}</option>;
+                return <S.Option key={index}>{value}</S.Option>;
               })}
             </S.Select>
             <S.Download onClick={moveToDownload}>다운로드</S.Download>

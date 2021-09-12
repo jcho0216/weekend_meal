@@ -7,7 +7,7 @@ export const Container = styled.div`
   color: rgba(35, 53, 57, 0.6);
   display: flex;
   min-width: 800px;
-  min-height: 800px;
+  min-height: 500px;
 `;
 
 export const Header = styled.div`
@@ -40,6 +40,10 @@ export const Select = styled.select`
   margin-right: 20px;
 `;
 
+export const Option = styled.option`
+  color: black;
+`;
+
 export const Download = styled.div`
   height: 30px;
   display: flex;
@@ -66,10 +70,11 @@ export const MealContainer = styled.div`
   border-bottom-right-radius: 5px;
   margin: auto auto;
   min-width: 800px;
+  min-height: 500px;
 `;
 
 export const MealTable = styled.div`
-  height: 85%;
+  height: 80%;
   width: 100%;
   overflow: auto;
   ::-webkit-scrollbar {
@@ -119,7 +124,6 @@ export const TableCell = styled.div`
   height: 30px;
   vertical-align: middle;
   cursor: pointer;
-
   &:nth-child(1) {
     width: 10%;
   }
