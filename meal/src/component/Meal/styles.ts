@@ -52,7 +52,7 @@ export const Download = styled.div`
   color: #f4f8f9;
   vertical-align: middle;
   line-height: 60px;
-  margin-right: 88px;
+  margin-right: 80px;
   cursor: pointer;
 `;
 
@@ -74,7 +74,7 @@ export const MealContainer = styled.div`
 `;
 
 export const MealTable = styled.div`
-  height: 84%;
+  height: 82%;
   width: 100%;
   overflow: auto;
 `;
