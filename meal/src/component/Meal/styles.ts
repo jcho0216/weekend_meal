@@ -3,7 +3,8 @@ import styled from "@emotion/styled";
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(180deg, #94e3e3, #b5e7e3);
+  /* background: linear-gradient(180deg, #94e3e3, #b5e7e3); */
+  background-image: linear-gradient(180deg, #078f91, #19b6b6);
   color: rgba(35, 53, 57, 0.6);
   display: flex;
   min-width: 800px;
@@ -66,20 +67,18 @@ export const MealContainer = styled.div`
   width: 75vw;
   height: 85vh;
   background-color: white;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-radius: 5px;
   margin: auto auto;
   min-width: 800px;
   min-height: 500px;
+  color: #212529;
+
 `;
 
 export const MealTable = styled.div`
   height: 80%;
   width: 100%;
   overflow: auto;
-  ::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 export const TableHeader = styled.div`
@@ -142,6 +141,9 @@ export const TableCell = styled.div`
   &:nth-child(6) {
     width: 25%;
   }
+  &:hover {
+    background-color: #f4f8f9;
+  }
 `;
 
 export const TableRow = styled.div`
@@ -151,7 +153,4 @@ export const TableRow = styled.div`
   line-height: 2px;
   vertical-align: middle;
   border-bottom: 1px solid #f4f8f9;
-  &:hover {
-    color: #212529;
-  }
 `;
