@@ -17,8 +17,6 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   background-color: #36304a;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
 `;
 
 export const Title = styled.div`
@@ -65,9 +63,8 @@ export const SelectDownloadBox = styled.div`
 export const MealContainer = styled.div`
   width: 75vw;
   height: 85vh;
+  margin: 5vh auto;
   background-color: #36304a;
-  border-radius: 5px;
-  margin: auto auto;
   min-width: 800px;
   min-height: 500px;
   color: #212529;
