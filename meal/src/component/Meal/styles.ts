@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  /* background: linear-gradient(180deg, #94e3e3, #b5e7e3); */
   background-image: linear-gradient(180deg, #078f91, #19b6b6);
   color: rgba(35, 53, 57, 0.6);
   display: flex;
@@ -72,11 +71,10 @@ export const MealContainer = styled.div`
   min-width: 800px;
   min-height: 500px;
   color: #212529;
-
 `;
 
 export const MealTable = styled.div`
-  height: 80%;
+  height: 84%;
   width: 100%;
   overflow: auto;
 `;
