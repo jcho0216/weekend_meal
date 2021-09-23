@@ -30,16 +30,17 @@ const Meal: FC = (): JSX.Element => {
     let yearClass = className.split("-");
     let year = yearClass[0];
     let classroom = yearClass[1];
+    // setLoading(true);
     const GetData = async () => {
-      setLoading(true);
       await getClassMember("GET", `${baseUrl}?grade=${year}&cls=${classroom}`)
         .then((res) => setData(res.status))
-        .catch((err) =>
-          alert("에러 발생: 정지우 학생에게 문의하세요 (와이파이 연결)")
-        );
+        .catch((err) => {
+          alert("에러 발생: 정지우 학생에게 문의하세요 (와이파이 연결)");
+          console.log(err);
+        });
+        // setLoading(false);
     };
     GetData();
-    setLoading(false);
     setYear(year);
     setClassroom(classroom);
   }, [className]);
@@ -51,10 +52,7 @@ const Meal: FC = (): JSX.Element => {
   }, [year, classroom]);
 
   const moveToDownload = () => {
-    let open = window.open(downloadURL);
-    setTimeout(() => {
-      open?.close();
-    }, 300);
+    window.open(downloadURL);
   };
 
   return (
@@ -84,7 +82,7 @@ const Meal: FC = (): JSX.Element => {
           </S.TableRow>
         </S.TableHeader>
         {loading ? (
-          <h1>loading...</h1>
+          <h1 style={{color: "white", textAlign: "center", fontSize: "50px"}}>loading...</h1>
         ) : (
           <S.MealTable>
             {data.map((res: any, index: number) => {
